@@ -32,7 +32,7 @@ jobs:
           git pull
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add -A
+          git add resultados_flourish.csv
           git commit --allow-empty -m "update data daily sutran" -a
       - name: push my changes
         uses: ad-m/github-push-action@master
