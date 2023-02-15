@@ -33,6 +33,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git add -A
           git commit --allow-empty -m "update data daily sutran" -a
+          git push https://.:${{ secrets.GITHUB_TOKEN }}@github.com/sutran-data main
 
       - name: push my changes
         uses: ad-m/github-push-action@v0.6.0
