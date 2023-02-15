@@ -45,4 +45,4 @@ df_total = df_total[df_total['motivo'] == 'HUMANO']
 df_total = df_total.replace('TRANSITO', 'TRÁNSITO', regex=True)
 df_total = df_total.replace('"', '', regex=True)
 df_total['style'] = df_total['estado'].str.split(' ').str[1].str.lower()
-df_total.to_csv(f'resultados/flourish.csv', index=False)
+df_total.to_csv(f'resultados_flourish.csv', index=False)
