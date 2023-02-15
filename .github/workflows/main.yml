@@ -39,6 +39,6 @@ jobs:
         with:
           github_token: ${{ secrets.SCRAPER_SUTRAN_PAT }}
           branch: main
-          repository: annaabsi/scraper-sutran
+          repository: annaabsi/sutran-data
           force: true
           github_url: https://github.com/
