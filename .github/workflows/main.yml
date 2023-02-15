@@ -29,7 +29,6 @@ jobs:
           python scraper.py
       - name: commit my files
         run: |
-          git pull
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add resultados_flourish.csv
