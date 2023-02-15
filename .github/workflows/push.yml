@@ -1,6 +1,11 @@
 name: push-file-another-repo
 
-on: push
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: '10 2,4,12,14,16,18,21,23 * * *' # runs at 2,4,12,14,16,18,21,23 UTC everyday
 
 jobs:
   copy-file:
