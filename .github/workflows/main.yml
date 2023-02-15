@@ -13,10 +13,8 @@ jobs:
     steps:
 
       - name: checkout repo content
-        uses: actions/checkout@v3 # checkout the repository content to github runner
-        with:
-          fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
-          token: ${{ secrets.SCRAPER_SUTRAN_PAT }}
+        uses: actions/checkout@v2 # checkout the repository content to github runner
+
       - name: setup python
         uses: actions/setup-python@v2
         with:
@@ -29,15 +27,13 @@ jobs:
           python scraper.py
       - name: commit my files
         run: |
+          git pull
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add resultados_flourish.csv
+          git add -A
           git commit --allow-empty -m "update data daily sutran" -a
       - name: push my changes
-        uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@v0.6.0
         with:
-          github_token: ${{ secrets.SCRAPER_SUTRAN_PAT }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: main
-          repository: annaabsi/sutran-data
-          force: true
-          github_url: https://github.com/
