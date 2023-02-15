@@ -37,3 +37,25 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: main
+
+name: push-file-another-repo
+
+on: push
+
+jobs:
+  copy-file:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Pushes test file
+      uses: dmnemec/copy_file_to_another_repo_action@main
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.SCRAPER_SUTRAN_PAT }}
+      with:
+        source_file: 'resultados_flourish.csv'
+        destination_repo: 'annaabsi/sutran-data'
+        user_email: 'anna.absi@gmail.com'
+        user_name: 'annaabsi'
+        commit_message: 'actualizando datos'
