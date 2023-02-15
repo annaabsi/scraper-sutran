@@ -13,11 +13,10 @@ jobs:
     steps:
 
       - name: checkout repo content
-        uses: actions/checkout@v2 # checkout the repository content to github runner
+        uses: actions/checkout@v3 # checkout the repository content to github runner
         with:
-          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
           fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
-
+          token: ${{ secrets.SCRAPER_SUTRAN_PAT }}
       - name: setup python
         uses: actions/setup-python@v2
         with:
@@ -39,4 +38,7 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.SCRAPER_SUTRAN_PAT }}
-          repository: "https://github.com/annaabsi/scraper-sutran"
+          branch: main
+          repository: annaabsi/scraper-sutran
+          force: true
+          github_url: https://github.com/
