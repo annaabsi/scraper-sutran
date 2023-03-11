@@ -19,24 +19,8 @@ jobs:
       env:
         API_TOKEN_GITHUB: ${{ secrets.SCRAPER_SUTRAN_PAT }}
       with:
-        source_file: 'resultados_humano_flourish.csv'
+        source_file: 'resultados_flourish/'
         destination_repo: 'annaabsi/sutran-data'
         user_email: 'anna.absi@gmail.com'
         user_name: 'annaabsi'
-        commit_message: 'actualizando datos bloqueo humano'
-  copy-file-2:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-
-    - name: Pushes test file
-      uses: dmnemec/copy_file_to_another_repo_action@main
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.SCRAPER_SUTRAN_PAT }}
-      with:
-        source_file: 'resultados_climatologico_flourish.csv'
-        destination_repo: 'annaabsi/sutran-data'
-        user_email: 'anna.absi@gmail.com'
-        user_name: 'annaabsi'
-        commit_message: 'actualizando datos bloqueo climatologico'
+        commit_message: 'actualizando datos'
