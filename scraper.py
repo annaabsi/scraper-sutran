@@ -47,4 +47,6 @@ df_total['style'] = df_total['estado'].str.split(' ').str[1].str.lower()
 df_total_humano = df_total[df_total['motivo'] == 'HUMANO']
 df_total_humano.to_csv(f'resultados_flourish/resultados_humano_flourish.csv', index=False)
 df_total_climatologico = df_total[df_total['motivo'] == 'CLIMATOLOGICO']
+df_total_climatologico = df_total_climatologico.replace('TRÁNSITO RESTRINGIDO', 'BLOQUEO PARCIAL', regex=True)
+df_total_climatologico = df_total_climatologico.replace('TRÁNSITO INTERRUMPIDO', 'BLOQUEO TOTAL', regex=True)
 df_total_climatologico.to_csv(f'resultados_flourish/resultados_climatologico_flourish.csv', index=False)
