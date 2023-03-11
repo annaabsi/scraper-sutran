@@ -41,8 +41,10 @@ df_interrumpido = pd.json_normalize(df_i['properties'])
 
 frames = [df_restringido, df_interrumpido]
 df_total = pd.concat(frames, ignore_index=True)
-df_total = df_total[df_total['motivo'] == 'HUMANO']
 df_total = df_total.replace('TRANSITO', 'TRÁNSITO', regex=True)
 df_total = df_total.replace('"', '', regex=True)
 df_total['style'] = df_total['estado'].str.split(' ').str[1].str.lower()
-df_total.to_csv(f'resultados_flourish.csv', index=False)
+df_total_humano = df_total[df_total['motivo'] == 'HUMANO']
+df_total_humano.to_csv(f'resultados_humano_flourish.csv', index=False)
+df_total_climatologico = df_total[df_total['motivo'] == 'CLIMATOLOGICO']
+df_total_climatologico.to_csv(f'resultados_climatologico_flourish.csv', index=False)
